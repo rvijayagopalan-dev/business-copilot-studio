@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>API Copilot — Showcase</title>
+  <style>
+    body{font-family:Inter,Arial,Helvetica,sans-serif;background:#f7fbff;color:#0f172a;margin:24px}
+    header{margin-bottom:20px}
+    h1{margin:0 0 8px}
+    section{background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+    pre{background:#0b1220;color:#e6f0ff;padding:10px;border-radius:6px;overflow:auto}
+    .meta{font-size:0.9rem;color:#475569}
+    dl{margin:0}
+    dt{font-weight:700;margin-top:12px}
+    dd{margin:6px 0 0 0}
+    ul{margin:8px 0}
+    .agents{display:flex;gap:8px;flex-wrap:wrap}
+    .agent{background:#eef2ff;color:#0f3ab9;padding:6px 10px;border-radius:999px;font-weight:600}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>API Copilot — HTML Showcase</h1>
+    <p class="meta">Use cases, sample input queries, representative outputs, and the agents typically invoked by the platform.</p>
+  </header>
+
+  <section>
+    <h2>Use Case: Generate OpenAPI Spec from Intent</h2>
+    <dl>
+      <dt>Input Query</dt>
+      <dd><pre>"Design a Customer API for Banking: endpoints to create, get, update, delete customers. Return OpenAPI 3.1 with request/response schemas and examples."</pre></dd>
+      <dt>Output Response (representative)</dt>
+      <dd><pre>{ "openapi": "3.1.0", "info": {"title":"Customer API"}, "paths": { "/customers": {"post": {...}}, "/customers/{id}": {"get": {...}} }, "components": {"schemas": {...} }}</pre></dd>
+      <dt>Agents Invoked</dt>
+      <dd>
+        <div class="agents">
+          <span class="agent">Architect Agent</span>
+          <span class="agent">Developer Agent</span>
+          <span class="agent">Documentation Agent</span>
+        </div>
+      </dd>
+      <dt>Notes</dt>
+      <dd>Follow-up prompts may ask for security schemes (OAuth2), pagination, and error models.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Use Case: Generate SDK Snippet</h2>
+    <dl>
+      <dt>Input Query</dt>
+      <dd><pre>"Generate a JavaScript SDK function to call POST /customers using fetch, including typed request body and error handling."</pre></dd>
+      <dt>Output Response (representative)</dt>
+      <dd><pre>export async function createCustomer(apiBase, payload){ const res = await fetch(`${apiBase}/customers`, {...}); if(!res.ok) throw new Error(...); return res.json(); }</pre></dd>
+      <dt>Agents Invoked</dt>
+      <dd>
+        <div class="agents">
+          <span class="agent">Developer Agent</span>
+          <span class="agent">Documentation Agent</span>
+        </div>
+      </dd>
+      <dt>Notes</dt>
+      <dd>SDKs should include retries, timeouts, and typed examples when possible.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Use Case: Generate Test Cases and Postman Collection</h2>
+    <dl>
+      <dt>Input Query</dt>
+      <dd><pre>"Create a Postman collection with tests for Customer API: create, get, update, delete, and negative cases for invalid payloads."</pre></dd>
+      <dt>Output Response (representative)</dt>
+      <dd><pre>{ "info": {"name":"Customer API Tests"}, " item": [ {"name":"Create customer","request":{...},"event":[{"listen":"test","script":{...}}] } ] }</pre></dd>
+      <dt>Agents Invoked</dt>
+      <dd>
+        <div class="agents">
+          <span class="agent">QA Agent</span>
+          <span class="agent">Developer Agent</span>
+        </div>
+      </dd>
+      <dt>Notes</dt>
+      <dd>Tests include positive, negative, and contract checks. The QA Agent can auto-generate execution scripts.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Use Case: Security Review & OWASP Findings</h2>
+    <dl>
+      <dt>Input Query</dt>
+      <dd><pre>"Review this OpenAPI spec for OWASP top 10 API issues and provide prioritized remediation steps."</pre></dd>
+      <dt>Output Response (representative)</dt>
+      <dd><pre>- Issue: Missing rate limiting on POST /customers. - Risk: Abuse. - Fix: Add API gateway policy for rate limits and 429 responses. - Priority: High</pre></dd>
+      <dt>Agents Invoked</dt>
+      <dd>
+        <div class="agents">
+          <span class="agent">Security Agent</span>
+          <span class="agent">Governance Agent</span>
+        </div>
+      </dd>
+      <dt>Notes</dt>
+      <dd>Security Agent produces reproducible checks and code/config snippets to remediate issues.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Use Case: Create Mock Server & Sample Data</h2>
+    <dl>
+      <dt>Input Query</dt>
+      <dd><pre>"Generate a mock server (OpenAPI-based) for Customer API and provide 10 sample customer records for testing."</pre></dd>
+      <dt>Output Response (representative)</dt>
+      <dd><pre>Mock server configured with routes and example responses; sample JSON array of 10 customer objects with realistic fields.</pre></dd>
+      <dt>Agents Invoked</dt>
+      <dd>
+        <div class="agents">
+          <span class="agent">Developer Agent</span>
+          <span class="agent">QA Agent</span>
+        </div>
+      </dd>
+      <dt>Notes</dt>
+      <dd>Mocks speed up integration testing and front-end development; ensure data privacy for generated samples.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Use Case: API Observability Recommendations</h2>
+    <dl>
+      <dt>Input Query</dt>
+      <dd><pre>"Recommend trace, metrics, and logging suggestions for Customer API to detect slow endpoints and error hotspots."</pre></dd>
+      <dt>Output Response (representative)</dt>
+      <dd><pre>- Add distributed tracing: X-Request-ID, instrument latency metrics per route, capture 5xx error rate alerting and SLOs for 95th percentile latency.</pre></dd>
+      <dt>Agents Invoked</dt>
+      <dd>
+        <div class="agents">
+          <span class="agent">SRE Agent</span>
+          <span class="agent">Observability Agent</span>
+        </div>
+      </dd>
+      <dt>Notes</dt>
+      <dd>Include examples for Prometheus metrics and Grafana dashboard panels.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Showcase Guidance</h2>
+    <ul>
+      <li>Each prompt should include context: target API, security constraints, and desired artifact format (OpenAPI, Postman, SDK language).</li>
+      <li>Start with small, deterministic requests and iterate—ask for tests and examples in the same prompt.</li>
+      <li>Record which agents were invoked in the prompt metadata to replicate the workflow.
+    </ul>
+  </section>
+
+  <footer>
+    <p class="meta">Files: `SKILL.md`, `prompt.md`, `claude-prompts.md` should include the canonical prompt examples used for the above use cases.</p>
+  </footer>
+</body>
+</html>

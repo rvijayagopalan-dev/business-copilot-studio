@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Copilot Use Summary</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;margin:24px;background:#f6f8fb;color:#111}
+    h1{margin-top:0}
+    section{background:#fff;border-radius:8px;padding:18px;margin-bottom:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    ul{margin:0 0 8px 20px}
+    code{background:#eef2ff;padding:2px 6px;border-radius:4px}
+  </style>
+</head>
+<body>
+  <h1>Copilot Activity Summary</h1>
+  <p>Concise log of activities performed while building the <strong>dev-copilot</strong> demo and workspace scaffolding.</p>
+
+  <section>
+    <h2>Scaffold & Templates</h2>
+    <ul>
+      <li>Created product scaffold: <code>copilots/api-copilot</code> with <code>SKILL.md</code>, <code>copilot-instructions.md</code>, <code>prompt.md</code>, <code>README.md</code>.</li>
+      <li>Added a reusable template: <code>copilots/copilot-template</code> (SKILL, instructions, prompts, README).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Demo Product: <code>copilots/demo/dev-copilot</code></h2>
+    <ul>
+      <li>Added implementation files: <code>demo.html</code>, <code>demo.css</code>, <code>demo.js</code>.</li>
+      <li>Replaced unsafe eval with a safe evaluator: <code>calc.js</code> (shunting-yard → RPN evaluator).</li>
+      <li>Added tests and harness: <code>tests/test.js</code> and <code>package.json</code> ("test" script).</li>
+      <li>Workflow & docs: <code>AGILE.md</code>, <code>walkthrough.html</code>, <code>README.md</code>, <code>SKILL.md</code> (one-page template), <code>claude-prompts.md</code>, <code>prompt.md</code>.</li>
+      <li>Updated files to use ES modules: <code>demo.html</code> (module) and <code>demo.js</code> (imports <code>calc.js</code>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Developer Workflow & Prompts</h2>
+    <ul>
+      <li>Saved canonical prompts in <code>claude-prompts.md</code> and <code>prompt.md</code> for scaffold, safe logic, tests, PR summaries.</li>
+      <li>Tracked steps with a TODO list (requirements → tests → deploy) inside the conversation and repo artifacts.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Safety, Testing & Best Practices</h2>
+    <ul>
+      <li>Avoided <code>eval()</code>; implemented input validation and explicit divide-by-zero handling in <code>calc.js</code>.</li>
+      <li>Provided a tiny Node test harness to validate core arithmetic and precedence behavior.</li>
+      <li>Recommended next steps: keyboard accessibility, extended edge-case tests, CI and deployment (GitHub Pages/Netlify).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Files Created / Modified (high-level)</h2>
+    <ul>
+      <li><code>copilots/api-copilot/*</code></li>
+      <li><code>copilots/copilot-template/*</code></li>
+      <li><code>copilots/demo/dev-copilot/{demo.html,demo.css,demo.js,calc.js,AGILE.md,walkthrough.html,SKILL.md,claude-prompts.md,prompt.md,README.md,package.json,tests/test.js}</code></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Generated: 2026-06-23 — Use these artifacts to iterate with Claude Code and complete the PR/deployment steps.</p>
+  </footer>
+</body>
+</html>

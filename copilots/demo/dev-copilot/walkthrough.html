@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator Demo Walkthrough</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.65;
+      color: #111827;
+      background: #f8fafc;
+    }
+    header {
+      background: #111827;
+      color: white;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1, h2, h3 {
+      color: #111827;
+      margin-top: 1.5rem;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+    }
+    p {
+      margin: 1rem 0;
+    }
+    section {
+      margin-bottom: 2.5rem;
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.07);
+    }
+    .note {
+      background: #eef2ff;
+      border-left: 4px solid #4f46e5;
+      padding: 18px;
+      margin: 20px 0;
+    }
+    .step-list, .issue-list, .best-list {
+      margin: 0;
+      padding-left: 1.4rem;
+    }
+    .step-list li, .issue-list li, .best-list li {
+      margin-bottom: 0.8rem;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid #e5e7eb;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #6b7280;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calculator Demo Walkthrough</h1>
+    <p>How the team thinks through the use story, executes work, and manages risks with best practices.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Project Context</h2>
+      <p>This walkthrough describes the team’s reasoning while building the calculator demo. It is framed around a single use story and shows the responsibilities of the product owner, architect, lead, developer, and QA engineer.</p>
+      <p>The goal is to deliver a small, high-quality HTML calculator with an Agile SDLC and a clear audit trail of decisions, risks, and quality checks.</p>
+    </section>
+
+    <section>
+      <h2>1. Understanding the Use Story</h2>
+      <p>The team begins by clarifying the use story:</p>
+      <blockquote class="note">
+        <strong>Use story:</strong> As a user, I want a simple calculator so I can perform basic arithmetic operations quickly.
+      </blockquote>
+      <p>At this stage the team asks:</p>
+      <ul class="step-list">
+        <li>What are the exact functions needed? (add, subtract, multiply, divide)</li>
+        <li>What constitutes a delivered demo? (single page, working buttons, error handling)</li>
+        <li>Who will use the demo and how will it be validated?</li>
+      </ul>
+      <p>The team agrees on scope and constraints before moving forward.</p>
+    </section>
+
+    <section>
+      <h2>2. Roles and Thought Process</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Product Owner</h3>
+          <p>Ensures the use story is scoped to a simple, demo-friendly feature set. Confirms acceptance criteria and the definition of done.</p>
+        </div>
+        <div class="card">
+          <h3>Architect</h3>
+          <p>Chooses a simple web stack and designs a layout that is easy to implement and test. Balances clarity with scalability for future demo extensions.</p>
+        </div>
+        <div class="card">
+          <h3>Team Lead</h3>
+          <p>Translates the story into tasks, assigns work, and keeps the sprint aligned with quality expectations. Reviews the execution plan before coding begins.</p>
+        </div>
+        <div class="card">
+          <h3>Developer</h3>
+          <p>Builds the HTML/CSS/JS implementation, keeps the code readable, and validates the result against the acceptance criteria.</p>
+        </div>
+        <div class="card">
+          <h3>QA Engineer</h3>
+          <p>Defines test cases and verifies that all expected operations work correctly. Looks for edge cases and usability issues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Step-by-Step Process</h2>
+      <ol class="step-list">
+        <li><strong>Requirement refinement:</strong> Confirm the exact operations, display behavior, and error handling expected by the demo.</li>
+        <li><strong>Design the page:</strong> Sketch a calculator interface with a display and button grid. Keep the UI simple and intuitive.</li>
+        <li><strong>Plan the implementation:</strong> Divide work into `demo.html`, `demo.css`, and `demo.js` plus documentation artifacts.</li>
+        <li><strong>Develop the HTML structure:</strong> Create semantic markup with a readonly input and button controls.</li>
+        <li><strong>Style the page:</strong> Apply responsive CSS and ensure the layout works on mobile and desktop.</li>
+        <li><strong>Implement logic:</strong> Wire button clicks, build the expression string, evaluate the arithmetic, and handle invalid operations.</li>
+        <li><strong>Test with scenarios:</strong> Run the calculator with typical values and edge cases. Document the results.</li>
+        <li><strong>Review and refine:</strong> Inspect code quality, fix layout issues, and confirm behavior against acceptance criteria.</li>
+        <li><strong>Deploy and demonstrate:</strong> Open the demo locally or publish to a static host for stakeholders.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>4. Deep Dive: What the Team Watches Closely</h2>
+      <p>This section describes the subtle risks and quality checks the team monitors during the demo build.</p>
+      <ul class="issue-list">
+        <li><strong>Ambiguous inputs:</strong> The team decides whether the calculator must handle chained expressions or only simple operations. For this demo, they keep evaluation straightforward.</li>
+        <li><strong>Invalid expressions:</strong> The team explicitly handles divide-by-zero and malformed input rather than allowing uncaught JavaScript errors.</li>
+        <li><strong>UI state:</strong> The display should not be editable by the user directly, only through button clicks, to prevent inconsistent state.</li>
+        <li><strong>Accessibility:</strong> The UI must be readable and buttons should be easy to tap. Keyboard support is an optional improvement for future iterations.</li>
+        <li><strong>Responsiveness:</strong> Ensure the calculator layout does not break on smaller screens or narrower browsers.</li>
+        <li><strong>Semantic markup:</strong> Use appropriate HTML tags and avoid layout hacks that increase maintenance risk.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Best Practices Embedded in the Demo</h2>
+      <ul class="best-list">
+        <li><strong>Keep prompts and stories specific:</strong> A clear story leads to a more predictable demo outcome.</li>
+        <li><strong>Start simple:</strong> Solve the core feature first, then optionally add polish or enhancements later.</li>
+        <li><strong>Use separate concerns:</strong> Keep structure, style, and behavior in separate files to make the code easy to maintain.</li>
+        <li><strong>Validate early:</strong> Test the basic calculator operations as soon as the logic is in place, not after styling.</li>
+        <li><strong>Document decisions:</strong> Record why the team chose the stack and the feature scope. This becomes valuable when stakeholders review the work.</li>
+        <li><strong>Inspect manually and automatically:</strong> UX should be validated by a human, while the logic should be checked by precise test cases.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. How This Demo Maps to an Agile Sprint</h2>
+      <p>The team treats the work as a small sprint. Each task is deliberately scoped, and progress is reviewed after each step.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Plan</h3>
+          <p>Finalize the use story, acceptance criteria, and definition of done.</p>
+        </div>
+        <div class="card">
+          <h3>Build</h3>
+          <p>Implement the HTML/CSS/JS demo in discrete increments.</p>
+        </div>
+        <div class="card">
+          <h3>Review</h3>
+          <p>Inspect outputs, run test cases, and capture feedback.</p>
+        </div>
+        <div class="card">
+          <h3>Deploy</h3>
+          <p>Publish the working demo and share the outcome with stakeholders.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Closing the Feedback Loop</h2>
+      <p>After the demo is complete, the team should reflect on what worked and what can improve:</p>
+      <ul class="best-list">
+        <li>Did the story stay within scope?</li>
+        <li>Were there unexpected edge cases that needed extra handling?</li>
+        <li>Could the code structure be simplified further?</li>
+        <li>What additional accessibility or quality checks should be added next?</li>
+      </ul>
+      <p>These notes become the foundation for the next iteration or the next demo story.</p>
+    </section>
+  </main>
+  <footer>
+    <p>Part of the `dev-copilot` demo artifacts. <a href="README.md">Back to demo README</a></p>
+  </footer>
+</body>
+</html>
